@@ -1,10 +1,17 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const connectDB = require('./config/db')
+
 
 require('dotenv').config();
 const PORT = process.env.PORT
+app.use(express.static('public'));
 
+app.use(express.urlencoded({ extended: true })); 
+app.use(express.json());
+
+connectDB();
 
 
 const defaultUrl = '/api'
